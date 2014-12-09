@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ExigenceApp</string>
+    <string name="createButton">Create requirement</string>
+
+</resources>
