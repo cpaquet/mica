@@ -23,6 +23,8 @@ public class RequirementsWriter {
 			out =  Files.newOutputStream(filePath, CREATE, APPEND);
 		} catch (IOException x) {
 			System.err.println(x);
+			System.err.println(x);
+
 		}
 		
 		return out;
