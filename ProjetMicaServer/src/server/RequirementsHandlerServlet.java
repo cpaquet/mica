@@ -15,9 +15,7 @@ public class RequirementsHandlerServlet extends HttpServlet {
                RequirementReader reqReader = new RequirementReader();
                //resp.setContentType("text/plain");
                PrintWriter out = resp.getWriter();
-               reqReader.readFile();
-                
-                //out.println ("OSGI vous salue Android !");
+               reqReader.afficheALL();   
         }
 
 		@Override
@@ -26,6 +24,7 @@ public class RequirementsHandlerServlet extends HttpServlet {
 			
 			 //resp.setContentType("text/plain");
 			Requirement newRequirement = new Requirement(req.getParameter("description"));
+			
 			RequirementsWriter reqSaver = new RequirementsWriter();
 			reqSaver.saveRequirement(newRequirement);
 			
