@@ -3,6 +3,7 @@ package request;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -14,6 +15,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import requirements.Requirement;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -23,9 +25,9 @@ public class CreateRequirement extends AsyncTask<String, Void, String> {
 	
 	private String requirementDescription;
 	private View reqList;
-    private ArrayList<String> requirementsModels;
+    private ArrayList<Requirement> requirementsModels;
 
-	public CreateRequirement(String nRequirementDescription, View nReqList, ArrayList<String> nRequirementsModels) {
+	public CreateRequirement(String nRequirementDescription, View nReqList, ArrayList<Requirement> nRequirementsModels) {
 		super();
 		this.requirementDescription = nRequirementDescription;
 		this.reqList = nReqList;
@@ -77,9 +79,11 @@ public class CreateRequirement extends AsyncTask<String, Void, String> {
 
 	@Override
 	protected void onPostExecute(String output) {
-		requirementsModels.add(output);
+		System.out.println(output);
+		requirementsModels.add(new Requirement(requirementDescription, output));
 		ArrayAdapter a = (ArrayAdapter)((ListView)reqList).getAdapter();
 		a.notifyDataSetChanged();
 	}
+	
 }
 
