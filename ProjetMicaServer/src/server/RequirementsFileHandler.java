@@ -12,7 +12,7 @@ import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
 public class RequirementsFileHandler {
-	private Document document;
+	protected Document document;
 	private static String FILENAME = "./requirements_save.xml";
 	static Element root = new Element("requirements");
 	

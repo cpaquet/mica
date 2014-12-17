@@ -1,7 +1,10 @@
 package server;
 
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +16,19 @@ public class RequirementsHandlerServlet extends HttpServlet {
 
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
                RequirementReader reqReader = new RequirementReader();
-               //resp.setContentType("text/plain");
+               resp.setContentType("text/plain");
+               
+               String reqList = reqReader.getAllRequirements();   
+            
                PrintWriter out = resp.getWriter();
-               reqReader.afficheALL();   
+               out.println (reqList);
         }
+        
 
 		@Override
 		protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 				throws ServletException, IOException {
 			
-			 //resp.setContentType("text/plain");
 			Requirement newRequirement = new Requirement(req.getParameter("description"));
 			
 			RequirementsWriter reqSaver = new RequirementsWriter();

@@ -1,10 +1,18 @@
 package server;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 public class Requirement {
+
 	private UUID id;
 	private String description;
+	
+	public Requirement(String description, UUID id) {
+		super();
+		this.description = description;
+		this.id =id;
+	}
 	
 	public Requirement(String description) {
 		super();
@@ -18,13 +26,6 @@ public class Requirement {
 
 	public String getDescription() {
 		return description;
-	}
-	
-	public String toXml() {
-		String xmlRepresentation = "\n<requirement>";
-		xmlRepresentation += "\n\t<uuid>" + this.getId().toString() + "</uuid>";
-		xmlRepresentation += "\n\t<description>" + this.getDescription() + "</description>";
-		return xmlRepresentation + "\n</requirement>";
 	}
 	
 }
